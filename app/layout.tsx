@@ -3,6 +3,7 @@ import { Neuton } from 'next/font/google'
 import Navbar from './components/navbar/Navbar'
 import ClientOnly from './components/navbar/ClientOnly'
 import RegisterModal from './components/modals/RegisterModal'
+import ToasterProvider from './provider/ToasterProvider'
 
 export const metadata = {
   title: 'Airbnb',
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
+          <ToasterProvider/>
           <RegisterModal/>
          <Navbar />
         </ClientOnly>
