@@ -1,5 +1,5 @@
 import './globals.css'
-import { Neuton } from 'next/font/google'
+import {  Nunito } from 'next/font/google'
 import Navbar from './components/navbar/Navbar'
 import ClientOnly from './components/navbar/ClientOnly'
 import RegisterModal from './components/modals/RegisterModal'
@@ -10,9 +10,8 @@ export const metadata = {
   description: 'Airbnb Clone',
 }
 
-const font = Neuton({
-  subsets: ["latin"],
-  weight: '200'     
+const font =  Nunito({
+  subsets: ["latin"],   
 })
 
 export default function RootLayout({
