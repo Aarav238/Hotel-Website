@@ -1,5 +1,5 @@
 "use client";
-import { signIn} from "next-auth/react";
+import { signIn } from "next-auth/react";
 import axios from "axios";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
@@ -44,10 +44,10 @@ const LoginModal = () => {
       if (callback?.ok) {
         toast.success("Logged in");
         router.refresh();
-        loginModal.onClose()
+        loginModal.onClose();
       }
-      if (callback?.error){
-        toast.error(callback.error)
+      if (callback?.error) {
+        toast.error(callback.error);
       }
     });
   };
@@ -82,7 +82,7 @@ const LoginModal = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
