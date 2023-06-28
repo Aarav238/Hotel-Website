@@ -30,7 +30,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
 
             className=" hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutal-100 transition cursor-pointer "
             >
-                AIRBNB your home
+                Airbnb your home
             </div>
             <div
              onClick={toggleOpen}
