@@ -5,7 +5,14 @@ import MenuItem from "./MenuItem"
 import { useCallback, useState } from "react"
 import useRegisterModal from "@/app/hooks/useRegisterModal"
 import useLoginModal from "@/app/hooks/useLoginModal"
-const UserMenu = () => {
+import { User } from "@prisma/client"
+
+interface UserMenuProps {
+    currentUser ?: User|null
+}
+const UserMenu: React.FC<UserMenuProps> = ({
+    currentUser
+}) => {
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
  const [isOpen , setIsOpen] = useState(false)
@@ -42,16 +49,41 @@ const UserMenu = () => {
             <div
             className=" absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
                 <div className="flex flex-col cursor-pointer">
+                
+                {currentUser ? (
                 <>
                 <MenuItem
-                onclick={loginModal.onOpen}
-                label="Login "
+                onclick={() => {}}
+                label="My trios"
                 />
                 <MenuItem
-                onclick={registerModal.onOpen}
-                label="Sign up"
+                onclick={() => {}}
+                label="My favorites"
+                />
+                <MenuItem
+                onclick={() => {}}
+                label="My Reservations"
+                />
+                <MenuItem
+                onclick={() => {}}
+                label="My Properties"
+                />
+                <MenuItem
+                onclick={() => {}}
+                label=""
                 />
                 </>
+                ):
+                (<>
+                    <MenuItem
+                    onclick={loginModal.onOpen}
+                    label="Login "
+                    />
+                    <MenuItem
+                    onclick={registerModal.onOpen}
+                    label="Sign up"
+                    />
+                    </>)}
                 </div>
             </div>
         )}
