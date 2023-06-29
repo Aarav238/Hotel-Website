@@ -164,6 +164,7 @@ const Modal: React.FC<ModalProps> = ({
                     gap-4 
                     w-full
                   "
+
                 >
                   {secondaryAction && secondaryActionLabel && (
                     <Button 
