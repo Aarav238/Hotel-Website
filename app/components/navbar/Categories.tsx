@@ -20,17 +20,17 @@ export const categories = [
     {
         label: 'Windmills',
         icon: GiWindmill,
-        description:"This property is close to the windmills"
+        description:"This property is close to the windmills!"
     },
     {
         label: 'Modern',
         icon: MdOutlineVilla,
-        description:"This property is modern"
+        description:"This property is modern!"
     },
     {
         label: 'Countryside',
         icon: TbMountain,
-        description:"This property is in the countryside"
+        description:"This property is in the countryside!"
     },
     {
         label: 'Pools',
@@ -45,7 +45,7 @@ export const categories = [
     {
         label: 'Lake',
         icon: GiBoatFishing,
-        description:"This property is close to a lake"
+        description:"This property is close to a lake!"
     },{
         label: 'Skiing',
         icon: FaSkiing,
@@ -74,7 +74,7 @@ export const categories = [
     {
         label: 'Desert',
         icon: GiCactus,
-        description:"This property is in desert"
+        description:"This property is in desert!"
     },
     {
         label: 'Barns',
@@ -84,7 +84,7 @@ export const categories = [
     {
         label: 'Lux',
         icon: IoDiamond,
-        description:"This property is luxurious"
+        description:"This property is luxurious!"
     },
 ]
 
