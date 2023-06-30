@@ -10,7 +10,6 @@ interface ButtonProps {
   small?: boolean;
   icon?: IconType;
 }
-//"world-countries": "^4.0.0"
 const Button: React.FC<ButtonProps> = ({
   label,
   onClick,

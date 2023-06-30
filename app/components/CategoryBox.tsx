@@ -1,54 +1,53 @@
-'use client'
+"use client";
 import qs from "query-string";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
-import { IconType } from "react-icons"
+import { IconType } from "react-icons";
 
 interface CategoryBoxProps {
-    icon: IconType;
-    label: string;
-    selected?: boolean;
-
+  icon: IconType;
+  label: string;
+  selected?: boolean;
 }
 
 const CategoryBox: React.FC<CategoryBoxProps> = ({
-    icon: Icon,
-    label,
-    selected
+  icon: Icon,
+  label,
+  selected,
 }) => {
+  const router = useRouter();
+  const params = useSearchParams();
 
-    const router = useRouter();
-    const params = useSearchParams();
+  const handleClick = useCallback(() => {
+    let currentQuery = {};
 
+    if (params) {
+      currentQuery = qs.parse(params.toString());
+    }
 
-    const handleClick = useCallback(() => {
-        let currentQuery = {}
+    const updatedQuery: any = {
+      ...currentQuery,
+      category: label,
+    };
 
-        if (params) {
-            currentQuery = qs.parse(params.toString());
-        }
+    if (params?.get("category") === label) {
+      delete updatedQuery.category;
+    }
+    const url = qs.stringifyUrl(
+      {
+        url: "/",
+        query: updatedQuery,
+      },
+      { skipNull: true }
+    );
 
-        const updatedQuery : any = {
-            ...currentQuery,
-            category: label
-        }
-
-        if (params?.get('category') === label){
-            delete updatedQuery.category;
-        }
-        const url = qs.stringifyUrl({
-            url: '/',
-            query: updatedQuery
-        }, {skipNull: true})
-
-        router.push(url)
-
-    }, [label, params, router])
+    router.push(url);
+  }, [label, params, router]);
   return (
     <div
-    onClick={handleClick}
-    className={`
+      onClick={handleClick}
+      className={`
     flex
     flex-col
     items-center
@@ -59,20 +58,15 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
     hover:text-neutral-800
     transition
     cursor-pointer
-    ${selected ? 'border-b-neutral-800' : 'border-transparent'}
-    ${selected ? 'text-neutral-800' : 'text-neutral-500'}
+    ${selected ? "border-b-neutral-800" : "border-transparent"}
+    ${selected ? "text-neutral-800" : "text-neutral-500"}
 
     `}
-
     >
-        <Icon size={26}  />
-    <div
-    className="font-medium  text-sm"
-    >
-        {label}
+      <Icon size={26} />
+      <div className="font-medium  text-sm">{label}</div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default CategoryBox
+export default CategoryBox;
