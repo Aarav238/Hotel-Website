@@ -9,6 +9,8 @@ import { FieldValues, useForm } from "react-hook-form";
 import CountrySelect from "../inputs/CountrySelect";
 import dynamic from "next/dynamic";
 import Counter from "../inputs/Counter";
+import ImageUpload from "../inputs/ImageUpload";
+import Input from "../inputs/Input";
 
 enum STEPS {
   CATEGORY = 0,
@@ -23,6 +25,7 @@ const RentModal = () => {
   const rentModal = useRentModal();
 
   const [steps, setSteps] = useState(STEPS.CATEGORY);
+  const[isLoading, setIsLoading] = useState(false)
 
   const {
     register,
@@ -50,6 +53,7 @@ const RentModal = () => {
   const guestCounts = watch('guestCount')
   const roomCounts = watch('roomCount')
   const bathroomtCounts = watch('bathroomCount')
+  const imageSrc = watch('imageSrc') 
 
 
 
@@ -175,7 +179,50 @@ const RentModal = () => {
     )
   }
 
+  if (steps === STEPS.IMAGES){
+    bodyContent = (
+      <div className=" flex flex-col gap-8">
+        <Heading 
+         title= "Add phot of your place"
+         subtitle="Show guests what your place looks like!" />
+         < ImageUpload 
+         value={imageSrc}
+         onChange={(value) => setCustomValue('imageSrc',value)}
+         />
+      </div>
+    )
+  }
 
+  if(steps === STEPS.DESCRIPTION){
+    bodyContent=(
+      <div className=" flex flex-col gap-8">
+        <Heading
+        title="How would you describe your place"
+        subtitle="Short and sweet works best"
+        />
+        <Input
+        id="title"
+        label="title"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+        />
+        <hr />
+        <Input
+        id="description"
+        label="description"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+        />
+
+      </div>
+    )
+  }
+
+  
 
   
   return (
