@@ -34,7 +34,7 @@ export default async function Home() {
         "
         >
 
-      {listing.map((listing: any) => {
+      {listing.map((listing) => {
         return (
           <ListingCard 
           currentUser={currentUser}
