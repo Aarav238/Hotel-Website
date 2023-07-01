@@ -9,8 +9,7 @@ import getCurrentUser from "./actions/getCurrentUser";
 export default async function Home() {
   const  listing = await getListing();
   const currentUser = await getCurrentUser();
-  const isEmpty = true
-  if (isEmpty) {
+  if (listing.length === 0) {
     return (
       <ClientOnly>
         <EmptyState showReset/>
