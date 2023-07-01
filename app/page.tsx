@@ -1,8 +1,12 @@
+import getListing from "./actions/getListingUsers";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import ClientOnly from "./components/navbar/ClientOnly";
-
-export default function Home() {
+import ListingCard from "./components/listings/ListingCard";
+import getCurrentUser from "./actions/getCurrentUser";
+export default async function Home() {
+  const  listing = await getListing();
+  const currentUser = await getCurrentUser();
   const isEmpty = true;
   if (isEmpty) {
     return (
@@ -29,7 +33,15 @@ export default function Home() {
         "
         >
 
-      <div> My Future Listing</div>
+      {listing.map((listing: any) => {
+        return (
+          <ListingCard 
+          currentUser={currentUser}
+          key={listing.id}
+          data={listing}
+          />
+        )
+      })}
 
         </div>
       </Container>
