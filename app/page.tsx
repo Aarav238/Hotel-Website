@@ -4,10 +4,12 @@ import EmptyState from "./components/EmptyState";
 import ClientOnly from "./components/navbar/ClientOnly";
 import ListingCard from "./components/listings/ListingCard";
 import getCurrentUser from "./actions/getCurrentUser";
+
+
 export default async function Home() {
   const  listing = await getListing();
   const currentUser = await getCurrentUser();
-  const isEmpty = true;
+  const isEmpty = true
   if (isEmpty) {
     return (
       <ClientOnly>
