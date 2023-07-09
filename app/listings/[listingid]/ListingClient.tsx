@@ -12,6 +12,9 @@ import { SafeUser } from "@/app/types";
 
 import Container from "@/app/components/Container";
 import { categories } from "@/app/components/navbar/Categories";
+import ListingInfo from "@/app/components/listings/ListingInfo";
+import ListingReservation from "@/app/components/listings/ListingReservation";
+import ListingHead from "@/app/components/listings/ListingHeader";
 
 
 const initialDateRange = {
